@@ -155,7 +155,6 @@ def interactive():
                 print "Something went wrong, let's take it from the top!"
                 reset()
             code = ""
-            continue
         elif line == "q":
             return
         else:
