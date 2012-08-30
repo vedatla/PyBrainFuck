@@ -2,7 +2,7 @@
 
 """
 a simple (and not neccesarily efficient) brainfuck interpreter
-If called with no additional command line arguments, goes in the interactive
+If called with no additional command line arguments, goes into the interactive
 mode.
 If the first argument is a "-", program reads stdin and evaluates it.
 Else, program reads all arguments and evaluates them.
