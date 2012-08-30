@@ -135,32 +135,31 @@ def reset():
 
 def interactive():
     print """Welcome to the Brainfuck Interpreter.
-    Magical commands: (if the last command wasn't a ',')
+    Magical commands:
     \tType ";" on an empty line to get your program evaluated.
     \tType "r" on an empty line to reset the tape
     \tType "q" on an empty line to quit"""
     code = ""
-    last = ""
     while True:
         line = str(raw_input("> "))
-        if last != ",":
-            if line == "r":
+        if line == "r":
+            reset()
+            code = ""
+        elif line == ";":
+            try:
+                sys.stdout.write("\n")
+                eval_bf(code)
+                sys.stdout.write("\n")
+            except Exception, message:
+                print message
+                print "Something went wrong, let's take it from the top!"
                 reset()
-                continue
-            elif line == ";":
-                try:
-                    sys.stdout.write("\n")
-                    eval_bf(code)
-                    sys.stdout.write("\n")
-                    continue
-                except Exception, message:
-                    print message
-                    print "Something went wrong, let's take it from the top!"
-                    reset()
-                code = ""
-            elif line == "q":
-                return
-        code += line
+            code = ""
+            continue
+        elif line == "q":
+            return
+        else:
+            code += line
 
 
 if __name__ == "__main__":

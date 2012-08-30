@@ -7,7 +7,6 @@ Usage
 =====
 * If no command line argument is supplied, the program will run in the
   interactive mode.
-  Providing that the last command entered isn't a comma, you can:
   * Type "r" on an empty line, to reset the tape and set the program counter
     to zero.
   * Type ";" on an empty line, to get your code evaluated.
