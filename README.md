@@ -5,7 +5,7 @@ An interpreter for brainfuck written in python.
 
 Usage
 =====
-* If no command line argument supplied, the program will run in the
+* If no command line argument is supplied, the program will run in the
   interactive mode.
   Providing that the last command entered isn't a comma, you can:
   * Type "r" on an empty line, to reset the tape and set the program counter
