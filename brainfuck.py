@@ -33,6 +33,8 @@ def lt():
 def gt():
     """" performs a > """
     global ptr
+    if ptr == 3*10**4:
+        raise ValueError, "Segmentation fault!"
     ptr += 1
 
 def plus():
@@ -112,14 +114,18 @@ def eval_bf(code):
     stack = []
     while pc < len(code):
         instruction = code[pc]
+        # handle the primitives directly
         if instruction in handle_directly:
             apply(handle_directly[instruction])
         elif instruction == "[":
+            # if loop condition is fullfiled
+            # enter loop block
             if tape[ptr] > 0:
                 stack.append(pc)
-            else:
+            else: # else go to the end of the block
                 pc = loop[pc]
         elif instruction == "]":
+            # jump back where you came from!
             pc = stack.pop() - 1
         pc += 1
 
