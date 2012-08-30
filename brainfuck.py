@@ -10,12 +10,8 @@ Else, program reads all arguments and evaluates them.
 
 import sys
 
-##
-# primitive ::= { . | , | < | > | + | - }
-# program   ::= primitive | "[" program "]"
-##
 
-# simulate the tape with a dict
+# simulate the tape with a list
 tape = [0]*(3*10**4 + 1)
 
 # the data pointer
@@ -64,6 +60,7 @@ handle_directly = { "." : dot, "," : comma, "<" : lt, ">" : gt, "+" : plus, "-" 
 
 
 def parse(code):
+    """ maps the "["s to the corresponding "]"s """
     # stack to contain the indices of the opening brackets
     opening = []
     # dict which maps the indices of the opening brackets to the closing
@@ -105,11 +102,12 @@ def parse(code):
 
 
 def eval_bf(code):
+    """ evaluates brainfuck code """
     global ptr
     # get the scopes of the "[", "]"s
     loop  = parse(code)
-    # initialize a variable for the program counter
-    pc    = 0
+    # initialize the program counter
+    pc = 0
     # a stack to store the pc for loops
     stack = []
     while pc < len(code):
