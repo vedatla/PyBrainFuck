@@ -12,7 +12,7 @@ import sys
 
 
 # simulate the tape with a list
-tape = [0]*(3*10**4 + 1)
+tape = [0]*(3*10**4)
 
 # the data pointer
 ptr   = 0
@@ -22,14 +22,14 @@ ptr   = 0
 def lt():
     """ performs a < """
     global ptr
-    if ptr == 0:
+    if ptr <= 0:
         raise ValueError, "Segmentation fault!"
     ptr -= 1
 
 def gt():
     """" performs a > """
     global ptr
-    if ptr == 3*10**4:
+    if ptr >= 3*10**4 - 1:
         raise ValueError, "Segmentation fault!"
     ptr += 1
 
@@ -131,7 +131,7 @@ def eval_bf(code):
 def reset():
     global ptr, tape
     ptr = 0
-    tape = [0] * (3*10**4 + 1)
+    tape = [0] * (3*10**4)
 
 def interactive():
     print """Welcome to the Brainfuck Interpreter.
